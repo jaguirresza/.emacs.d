@@ -10,6 +10,8 @@ auto-save-list
 elpa
 recentf
 custom
+ido.last
+custom.el
 tramp
 .\#*
 
