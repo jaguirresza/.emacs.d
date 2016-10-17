@@ -5,8 +5,10 @@
 /.emacs.desktop
 /.emacs.desktop.lock
 *.elc
+*.eld
 auto-save-list
 elpa
+recentf
 custom
 tramp
 .\#*
