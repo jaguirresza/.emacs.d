@@ -4,13 +4,10 @@
 ;;; Init emcas configuration
 
 ;;; Code:
-(package-initialize)
-
 (setq inhibit-startup-message t)
 
 (require 'package)
 
-(defvar package-list)
 (setq package-list '(
   better-defaults
   general
@@ -22,16 +19,23 @@
 
 (unless package-archive-contents (package-refresh-contents))
 
-(defvar use-package-always-ensure)
-(defvar use-package-verbose)
-(setq use-package-always-ensure t
-      use-package-verbose t)
+(package-initialize)
 
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
-(require 'use-package)
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(setq use-package-always-ensure t
+      use-package-verbose t)
+
+;;; Requires
+(eval-when-compile
+  (require 'use-package))
 (require 'general)
 (require 'uniquify)
 

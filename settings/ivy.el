@@ -20,17 +20,13 @@
     (use-package counsel-projectile
       :init (counsel-projectile-on)
       :general (:keymaps 'evil-normal-state-map
-                         "C-p" nil
-                         "C-p f" 'counsel-projectile-find-file
-                         "C-p C-f" 'counsel-projectile-find-file
-                         "C-p d" 'counsel-projectile-find-dir
-                         "C-p C-d" 'counsel-projectile-find-dir
-                         "C-p b" 'counsel-projectile-switch-to-buffer
-                         "C-p C-b" 'counsel-projectile-switch-to-buffer
-                         "C-p s" 'counsel-projectile-ag
-                         "C-p C-s" 'counsel-projectile-ag
-                         "C-p p" 'counsel-projectile-switch-project
-                         "C-p C-p" 'counsel-projectile-switch-project)))
+                :prefix "SPC"
+                "p" '(:ignore t :which-key "Projectile")
+                "p f" '(counsel-projectile-find-file :which-key "Find file")
+                "p b" '(counsel-projectile-switch-to-buffer :which-key "Find buffer")
+                "p d" '(counsel-projectile-find-dir :which-key "Find directory")
+                "p s" '(counsel-projectile-ag :which-key "ag in project")
+                "p p" '(counsel-projectile-switch-project :which-key "Switch project"))))
 
   (use-package flx)
   (use-package swiper)

@@ -25,6 +25,6 @@
                     indent-tabs-mode 1)))
 
   (use-package go-eldoc
-	:config
-	(add-hook 'go-mode-hook 'go-eldoc-setup)))
+    :config
+    (add-hook 'go-mode-hook 'go-eldoc-setup)))
 ;;; go.el ends here

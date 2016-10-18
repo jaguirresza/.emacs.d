@@ -1,7 +1,6 @@
 (use-package dired
   :ensure nil
-  :bind
-  (:map dired-mode-map ("SPC" . nil))
+  :bind (:map dired-mode-map ("SPC" . nil))
 
   :init
   (add-hook 'dired-mode-hook 'vinegar/dired-setup)
@@ -12,8 +11,6 @@
     (setq diredp-hide-details-initially-flag nil
           diredp-hide-details-propagate-flag nil
           font-lock-maximum-decoration (quote ((dired-mode . 1) (t . t))))
-    ;; use single buffer for all dired navigation
-    ;; disable font themeing from dired+
     (toggle-diredp-find-file-reuse-dir 1))
 
   :general

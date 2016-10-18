@@ -18,5 +18,6 @@
                  :actions '(insert)))
 
 (defun my-go-handle-breakline (id action context)
-  (save-excursion (newline-and-indent))
+  (save-excursion
+    (newline-and-indent))
   (indent-according-to-mode))

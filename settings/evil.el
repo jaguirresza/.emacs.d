@@ -15,45 +15,31 @@
 
   (evil-mode t)
 
+  :general
+  (:keymaps '(evil-normal-state-map evil-motion-state-map)
+            "C-h" 'evil-window-left
+            "C-j" 'evil-window-down
+            "C-l" 'evil-window-right
+            "C-k" 'evil-window-up)
+
+  (:keymaps 'evil-normal-state-map
+            "-" 'dired-jump)
   :config
-  (defvar general-default-keymaps)
-  (setq general-default-keymaps 'evil-normal-state-map)
-
-  (general-define-key :keymaps '(evil-normal-state-map evil-motion-state-map)
-                      "C-h" 'evil-window-left
-                      "C-j" 'evil-window-down
-                      "C-l" 'evil-window-right
-                      "C-k" 'evil-window-up)
-
-  (general-define-key :keymaps 'evil-normal-state-map
-                      "-" 'dired-jump)
-
   (evil-ex-define-cmd "W" "write")
   (evil-ex-define-cmd "Q" "quit")
 
-  (defun my-linum-relative-toggle ()
-    (interactive)
-    (if (and (boundp 'linum-mode) linum-mode)
-        (linum-relative-toggle)
-      (progn
-        (linum-mode)
-        (linum-relative-toggle))))
-
   (use-package evil-commentary
-    :init
-    (evil-commentary-mode))
+    :init (evil-commentary-mode))
 
   (use-package evil-iedit-state
     :commands evil-iedit-state/iedit-mode)
 
   (use-package evil-matchit
-    :init
-    (global-evil-matchit-mode 1))
+    :init (global-evil-matchit-mode 1))
 
   (use-package evil-numbers
     :commands (evil-numbers/inc-at-pt evil-numbers/dec-at-t))
 
   (use-package evil-surround
-    :init
-    (global-evil-surround-mode 1)))
+    :init (global-evil-surround-mode 1)))
 ;;; evil.el ends here

@@ -3,8 +3,8 @@
 
   :general
   (:keymaps 'elixir-mode-map
-            :states 'normal
-            "gd" '(alchemist-goto-definition-at-point :which-key "Go to definition at point"))
+   :states 'normal
+   "gd" '(alchemist-goto-definition-at-point :which-key "Go to definition at point"))
 
   (:keymaps 'elixir-mode-map
    :states 'normal

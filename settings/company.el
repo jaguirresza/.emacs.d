@@ -26,7 +26,12 @@
         company-tooltip-minimum-width 40
         company-tooltip-align-annotations t
         company-tooltip-margin 0)
-  
+
+  (use-package company-flow
+    :init
+    (setq company-flow-modes '(js-mode js2-mode js2-jsx-mode))
+    (add-to-list 'company-backends 'company-flow))
+
   (use-package company-go
     :init
     (add-hook 'go-mode-hook (lambda ()

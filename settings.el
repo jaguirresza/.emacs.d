@@ -28,5 +28,5 @@
 (global-set-key [escape] 'keyboard-escape-quit)         ;; everywhere else
 
 ;; load ~/.emacs.d/settings
-(mapc 'load (directory-files "~/.emacs.d/settings" t "^[A-Za-z-]*\\.el"))
+(mapc 'load (directory-files "~/.emacs.d/settings" t "^[A-Za-z][A-Za-z-0-9]*\\.el"))
 ;;; settings.el ends here
