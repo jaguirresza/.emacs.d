@@ -12,6 +12,7 @@ recentf
 custom
 ido.last
 custom.el
+local.el
 tramp
 .\#*
 
