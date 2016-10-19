@@ -1,7 +1,7 @@
 ;;; package --- init
 
 ;;; Commentary:
-;;; Init emcas configuration
+;;; Init Emacs configuration
 
 ;;; Code:
 (package-initialize)
