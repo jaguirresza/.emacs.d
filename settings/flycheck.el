@@ -13,6 +13,18 @@ This is intended to use as a `flycheck-after-syntax-check-hook'."
       (dolist (window (get-buffer-window-list flycheck-error-list-buffer))
         (quit-window nil window)))))
 
+(defcustom flycheck-error-list-window-height 6
+  "Flycheck error list window height."
+  :group 'flycheck)
+
+(defadvice flycheck-error-list-refresh (around shrink-error-list activate)
+  "Shrink error list window to a fixed size."
+  ad-do-it
+  (when (and (boundp 'flycheck-current-errors) flycheck-current-errors)
+    (-when-let (window (flycheck-get-error-list-window t))
+      (with-selected-window
+          (fit-window-to-buffer window window flycheck-error-list-window-height)))))
+
 (use-package flycheck
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode)
