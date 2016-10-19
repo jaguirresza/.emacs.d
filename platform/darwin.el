@@ -9,5 +9,8 @@
 (setq mac-control-modifier 'control)
 
 (use-package exec-path-from-shell
-  :init (exec-path-from-shell-initialize))
+  :init
+  (setq-default exec-path-from-shell-variables
+                '("PATH" "MANPATH" "GOROOT" "GOPATH"))
+  (exec-path-from-shell-initialize))
 ;;; darwin.el ends here
