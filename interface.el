@@ -1,25 +1,39 @@
-(setq display-time-24hr-format t
-      display-time-default-load-average nil
-      Info-use-header-line nil
-      isearch-lazy-highlight nil
-      max-mini-window-height 0
-      pop-up-windows t
-      show-paren-style 'parenthesis
-      show-paren-delay 0
-      visible-bell t
-      show-trailing-whitespace t
-      uniquify-buffer-name-style 'forward
-      uniquify-ignore-buffers-re "^\\*")
+;;; package --- interface
+
+;;; Commentary:
+;;; Interface related settings.
+
+;;; Code:
+(setq-default Info-use-header-line nil
+              isearch-lazy-highlight nil
+              max-mini-window-height 0
+              pop-up-windows t
+              show-paren-style 'parenthesis
+              show-paren-delay 0
+              visible-bell t
+              show-trailing-whitespace t
+              uniquify-buffer-name-style 'forward
+              uniquify-ignore-buffers-re "^\\*")
 
 (set-display-table-slot standard-display-table 0 ?\ )
-(set-default-font "Fira Code 14")
 
-(use-package zenburn-theme
-  :config
-  (load-theme 'zenburn t))
+(use-package spacemacs-theme
+  :init (load-theme 'spacemacs-light t))
+
+(set-frame-font "Fira Code 14")
+
+(let ((faces '(default
+               mode-line
+               mode-line-buffer-id
+               mode-line-emphasis
+               mode-line-highlight
+               mode-line-inactive)))
+     (mapc
+      (lambda (face) (set-face-attribute face nil :font "Fira Code-13"))
+      faces))
 
 (when (window-system)
-  (set-default-font "Fira Code"))
+  (set-frame-font "Fira Code 14"))
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")
@@ -49,3 +63,4 @@
   (dolist (char-regexp alist)
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
+;;; interface.el ends here

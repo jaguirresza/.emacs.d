@@ -1,3 +1,9 @@
+;;; package --- js2
+
+;;; Commentary:
+;;; js2 configuration.
+
+;;; Code:
 (use-package js2-mode
   :mode ("\\.jsx?\\'" . js2-jsx-mode)
   :interpreter ("node" . js2-jsx-mode)

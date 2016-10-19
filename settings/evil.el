@@ -1,32 +1,34 @@
 ;;; package --- evil
 
 ;;; Commentary:
-;;; evil-mode keybindings.
+;;; evil-mode keybindings and configuration.
 
 ;;; Code:
 (use-package evil
   :init
-  (setq evil-ex-search-vim-style-regexp t
-        evil-search-module 'evil-search
-        evil-want-C-u-scroll t
-        evil-auto-balance-windows t
-        evil-want-Y-yank-to-eol nil)
-  (setq-default evil-shift-width 2)
-
+  (setq-default evil-ex-search-vim-style-regexp t
+                evil-search-module 'evil-search
+                evil-want-C-u-scroll t
+                evil-shift-width 2
+                evil-auto-balance-windows t
+                evil-want-Y-yank-to-eol nil)
   (evil-mode t)
 
-  :general
-  (:keymaps '(evil-normal-state-map evil-motion-state-map)
+  :config
+  (general-define-key
+   :keymaps 'evil-normal-state-map
+            "-" 'dired-jump)
+
+  (general-define-key
+   :keymaps '(evil-normal-state-map evil-motion-state-map)
             "C-h" 'evil-window-left
             "C-j" 'evil-window-down
             "C-l" 'evil-window-right
             "C-k" 'evil-window-up)
 
-  (:keymaps 'evil-normal-state-map
-            "-" 'dired-jump)
-  :config
-  (evil-ex-define-cmd "W" "write")
-  (evil-ex-define-cmd "Q" "quit")
+  (when (fboundp 'evil-ex-define-cmd)
+    (evil-ex-define-cmd "W" "write")
+    (evil-ex-define-cmd "Q" "quit"))
 
   (use-package evil-commentary
     :init (evil-commentary-mode))

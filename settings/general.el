@@ -34,7 +34,7 @@
  "s--" 'text-scale-decrease
  )
 
-(general-define-key 
+(general-define-key
  :states 'normal
  :prefix "SPC"
  "SPC" 'evil-switch-to-windows-last-buffer

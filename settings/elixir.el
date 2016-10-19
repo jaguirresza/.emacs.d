@@ -1,12 +1,26 @@
+;;; package --- elixir
+
+;;; Commentary:
+;;; elixir keybindings and configuration.
+
+;;; Code:
 (use-package elixir-mode
   :mode "\\.ex\\'" "\\.exs\\'"
+  :init
+  (use-package alchemist
+          :ensure elixir-mode
+          :diminish alchemist-mode
+          :diminish alchemist-phoenix-mode)
 
-  :general
-  (:keymaps 'elixir-mode-map
+  :config
+
+  (general-define-key
+   :keymaps 'elixir-mode-map
    :states 'normal
-   "gd" '(alchemist-goto-definition-at-point :which-key "Go to definition at point"))
+   "gd" 'alchemist-goto-definition-at-point)
 
-  (:keymaps 'elixir-mode-map
+  (general-define-key
+   :keymaps 'elixir-mode-map
    :states 'normal
    :prefix "SPC"
    "m" '(:ignore t :which-key "Elixir")
@@ -24,12 +38,7 @@
    "r a" '(alchemist-mix-test :which-key "Run all tests")
    "r f" '(alchemist-mix-test-this-buffer :which-key "Run tests in buffer")
    "r r" '(alchemist-mix-rerun-last-test :which-key "Rerun tests")
-   "r s" '(alchemist-mix-test-at-point :which-key "Run test at point")))
+   "r s" '(alchemist-mix-test-at-point :which-key "Run test at point"))
 
-(use-package alchemist
-  :ensure elixir-mode
-  :diminish alchemist-mode
-  :diminish alchemist-phoenix-mode
-
-  :config
-  (add-hook 'alchemist-mode-hook 'company-mode))
+(add-hook 'alchemist-mode-hook 'company-mode))
+;;; elixir.el ends here

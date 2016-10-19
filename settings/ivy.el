@@ -1,25 +1,28 @@
 ;;; package --- ivy
 
 ;;; Commentary:
-;;; Ivy configuration
+;;; Ivy configuration.
 
 ;;; Code:
 (use-package ivy
   :diminish ivy-mode
   :init
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  :general (:keymaps 'ivy-mode-map
+  (setq-default ivy-use-virtual-buffers t)
+
+  :config
+  (general-define-key :keymaps 'ivy-mode-map
                      "C-j" 'ivy-next-line
                      "C-k" 'ivy-previous-line
-                     "C-d" (lambda () (interactive) (ivy-next-line 5))
-                     "C-u" (lambda () (interactive) (ivy-previous-line 5)))
-  :config
+                     "C-d" (lambda () (interactive)
+                             (when (fboundp 'ivy-next-line) (ivy-next-line 5)))
+                     "C-u" (lambda () (interactive)
+                             (when (fboundp 'ivy-previous-line) (ivy-previous-line 5))))
   (use-package counsel
     :config
     (use-package counsel-projectile
       :init (counsel-projectile-on)
-      :general (:keymaps 'evil-normal-state-map
+      :config (general-define-key :keymaps 'evil-normal-state-map
                 :prefix "SPC"
                 "p" '(:ignore t :which-key "Projectile")
                 "p f" '(counsel-projectile-find-file :which-key "Find file")

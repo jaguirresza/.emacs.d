@@ -8,17 +8,20 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode)
 
-  :general
-  (:keymaps 'company-active-map
-                      "M-n" nil
-                      "M-p" nil
-                      "C-j" 'company-select-next
-                      "C-k" 'company-select-previous
-                      "C-d" (lambda ()
-                              (interactive) (company-select-next 5))
-                      "C-u" (lambda ()
-                              (interactive) (company-select-previous 5)))
   :config
+  (general-define-key
+   :keymaps 'company-active-map
+   "M-n" nil
+   "M-p" nil
+   "C-j" 'company-select-next
+   "C-k" 'company-select-previous
+   "C-d" (lambda ()
+           (interactive)
+           (when (fboundp 'company-select-next) (company-select-next 5)))
+   "C-u" (lambda ()
+           (interactive)
+           (when (fboundp 'company-select-previous) (company-select-previous 5))))
+
   (setq company-tooltip-limit 20
         company-echo-delay 0
         company-begin-commands '(self-insert-command)
