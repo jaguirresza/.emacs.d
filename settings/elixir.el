@@ -6,13 +6,11 @@
 ;;; Code:
 (use-package elixir-mode
   :mode "\\.ex\\'" "\\.exs\\'"
-  :init
-  (use-package alchemist
-          :ensure elixir-mode
-          :diminish alchemist-mode
-          :diminish alchemist-phoenix-mode)
-
   :config
+  (use-package alchemist
+    :ensure elixir-mode
+    :diminish alchemist-mode
+    :diminish alchemist-phoenix-mode)
 
   (general-define-key
    :keymaps 'elixir-mode-map
@@ -40,5 +38,5 @@
    "r r" '(alchemist-mix-rerun-last-test :which-key "Rerun tests")
    "r s" '(alchemist-mix-test-at-point :which-key "Run test at point"))
 
-(add-hook 'alchemist-mode-hook 'company-mode))
+  (add-hook 'alchemist-mode-hook 'company-mode))
 ;;; elixir.el ends here
