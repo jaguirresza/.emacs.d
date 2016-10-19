@@ -45,7 +45,4 @@
 
 (load "~/.emacs.d/local.el" 'noerror)
 (load "~/.emacs.d/custom.el" 'noerror)
-
-(setq user-full-name "Jorge Aguirre"
-      user-mail-address "jorge.aguirre.sza@gmail.com")
 ;;; init.el ends here
