@@ -21,10 +21,11 @@
 
   (general-define-key
    :keymaps '(evil-normal-state-map evil-motion-state-map)
-            "C-h" 'evil-window-left
-            "C-j" 'evil-window-down
-            "C-l" 'evil-window-right
-            "C-k" 'evil-window-up)
+   "gt" 'other-frame
+   "C-h" 'evil-window-left
+   "C-j" 'evil-window-down
+   "C-l" 'evil-window-right
+   "C-k" 'evil-window-up)
 
   (when (fboundp 'evil-ex-define-cmd)
     (evil-ex-define-cmd "W" "write")
