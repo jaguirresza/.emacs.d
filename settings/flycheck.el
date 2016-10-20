@@ -22,8 +22,7 @@ This is intended to use as a `flycheck-after-syntax-check-hook'."
   ad-do-it
   (when (and (boundp 'flycheck-current-errors) flycheck-current-errors)
     (-when-let (window (flycheck-get-error-list-window t))
-      (with-selected-window (selected-window)
-        (fit-window-to-buffer window flycheck-error-list-window-height)))))
+      (fit-window-to-buffer window flycheck-error-list-window-height))))
 
 (use-package flycheck
   :init
@@ -42,6 +41,9 @@ This is intended to use as a `flycheck-after-syntax-check-hook'."
 
   (when (fboundp 'flycheck-add-mode)
     (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode))
+
+  (use-package flycheck-pos-tip
+    :config  (flycheck-pos-tip-mode))
 
   (use-package flycheck-flow
     :config
