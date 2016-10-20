@@ -11,9 +11,9 @@ This is intended to use as a `flycheck-after-syntax-check-hook'."
       (when (fboundp 'flycheck-list-errors) (flycheck-list-errors))
     (when (and (boundp 'flycheck-error-list-buffer) flycheck-error-list-buffer)
       (dolist (window (get-buffer-window-list flycheck-error-list-buffer))
-        (quit-window nil window)))))
+        (quit-window t window)))))
 
-(defcustom flycheck-error-list-window-height 6
+(defcustom flycheck-error-list-window-height 8
   "Flycheck error list window height."
   :group 'flycheck)
 
@@ -22,8 +22,8 @@ This is intended to use as a `flycheck-after-syntax-check-hook'."
   ad-do-it
   (when (and (boundp 'flycheck-current-errors) flycheck-current-errors)
     (-when-let (window (flycheck-get-error-list-window t))
-      (with-selected-window
-          (fit-window-to-buffer window window flycheck-error-list-window-height)))))
+      (with-selected-window (selected-window)
+        (fit-window-to-buffer window flycheck-error-list-window-height)))))
 
 (use-package flycheck
   :init
