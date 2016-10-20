@@ -21,11 +21,12 @@
 
   (when (fboundp 'sp-local-pair)
     (sp-local-pair '(go-mode js2-jsx-mode) "{" nil
-                 :post-handlers '(:add my-curly-braces-newline-handle)
-                 :actions '(insert))))
+                   :when '(("RET"))
+                   :post-handlers '(:add my-curly-braces-newline-handle)
+                   :actions '(insert))))
 
 (defun my-curly-braces-newline-handle (id action context)
-  (save-excursion
-    (newline-and-indent))
-  (indent-according-to-mode))
+  (when (eq action 'insert)
+    (save-excursion (newline-and-indent))
+    (indent-according-to-mode)))
 ;;; smart-parens.el ends here
