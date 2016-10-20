@@ -5,7 +5,7 @@
 
 ;;; Code:
 (setq mac-command-modifier 'super)
-(setq mac-option-modifier 'meta)
+(setq mac-option-modifier nil)
 (setq mac-control-modifier 'control)
 
 (use-package exec-path-from-shell
