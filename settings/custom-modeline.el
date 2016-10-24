@@ -85,31 +85,42 @@
       (t (format "%s" vc-mode)))))
 
 (defun custom-modeline-flycheck-status ()
-  (defun cm-status--icon (icon)
-    (propertize (all-the-icons-octicon icon)
-                'face `(:family ,(all-the-icons-octicon-family) :height 0.9)))
-  (defun cm-status--text (text)
-    (propertize (format " %s" text)
-                'face '(:height 0.9)))
-  (defun cm-status (icon text)
-    (concat (cm-status--icon icon) (cm-status--text text)))
+  (defun cm-status (icon color)
+    )
 
   (let* ((text (pcase flycheck-last-status-change
                 (`finished (if flycheck-current-errors
-                               (let ((count (let-alist (flycheck-count-errors flycheck-current-errors)
-                                              (+ (or .warning 0) (or .error 0)))))
-                                 (cm-status "x" (format "%s Issue%s" count (if (equal 1 count) "" "s"))))
-                              (cm-status "check" "No issues")))
-                (`running     (cm-status "sync" "Running"))
-                (`no-checker  (cm-status "circle-slash" "No checker"))
-                (`not-checked (cm-status "circle-slash" "Disabled"))
-                (`errored     (cm-status "issue-opened" "Error"))
-                (`interrupted (cm-status "alert"  "Interrupted"))
+                               (let ((error-count (let-alist (flycheck-count-errors flycheck-current-errors)
+                                              (+ (or .error 0))))
+                                     (warning-count (let-alist (flycheck-count-errors flycheck-current-errors)
+                                              (+ (or .warning 0)))))
+                                 (concat
+                                   (propertize (all-the-icons-octicon "x")
+                                               'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#ba2f59"))
+                                   (propertize (format " %s" error-count)
+                                               'face '(:height 0.9 :foreground "#ba2f59"))
+                                   " "
+                                   (propertize (all-the-icons-octicon "alert")
+                                               'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#dc752f"))
+                                   (propertize (format " %s" warning-count)
+                                               'face '(:height 0.9 :foreground "#dc752f"))))
+                              (propertize (all-the-icons-octicon "check")
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#67b11d"))))
+                (`running     (propertize (all-the-icons-octicon "sync")
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9)))
+                (`no-checker  (propertize (all-the-icons-octicon "circle-slash")
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9)))
+                (`not-checked (propertize (all-the-icons-octicon "circle-slash")
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#d0d0d0")))
+                (`errored     (propertize (all-the-icons-octicon "issue-opened")
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#df5f5f")))
+                (`interrupted (propertize (all-the-icons-octicon "alert")
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#df5f5f")))
                 (`suspicious  ""))))
-     (propertize (format "%s" text)
+     (propertize (format " %s " text)
                  'help-echo "Show Flycheck Errors"
                  'mouse-face '(:box 1)
-                 'display '(raise 0.1)
+                 'display '(raise 0.2)
                  'local-map (make-mode-line-mouse-map
                              'mouse-1 (lambda () (interactive) (flycheck-list-errors))))))
 
@@ -163,9 +174,7 @@
         (custom-modeline-modified)
         (custom-modeline-separator "|")
         (custom-modeline-project-id)
-        (custom-modeline-separator "|")
-
-        (custom-modeline-flycheck-status))
+        (custom-modeline-separator "|"))
        ;; right
        (concat
         (custom-modeline-mode-icon)
@@ -173,7 +182,8 @@
         (propertize (format "%s" (format-mode-line "%l:%c "))
                     'face '(:height 0.9)
                     'display '(raise 0.1))
-        (custom-modeline-icon-vc))
+        (custom-modeline-icon-vc)
+        (custom-modeline-flycheck-status))
        ))))))
 ;; Local Variables:
 ;; indent-tabs-mode: nil

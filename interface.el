@@ -29,11 +29,11 @@
                mode-line-highlight
                mode-line-inactive)))
      (mapc
-      (lambda (face) (set-face-attribute face nil :font "FuraCode Nerd Font-13"))
+      (lambda (face) (set-face-attribute face nil :font "Fira Code-13"))
       faces))
 
 (when (window-system)
-  (set-frame-font "FuraCode Nerd Font 14"))
+  (set-frame-font "Fira Code 14"))
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")
