@@ -28,7 +28,6 @@
       (linum-mode)
       (linum-relative-toggle))))
 
-
 (general-define-key
  "s-=" 'text-scale-increase
  "s--" 'text-scale-decrease
@@ -36,11 +35,29 @@
 
 (general-define-key
  :states 'normal
+ :prefix "["
+ "e" 'flycheck-previous-error
+ )
+
+(general-define-key
+ :states 'normal
+ :prefix "]"
+ "e" 'flycheck-next-error
+ )
+
+(general-define-key
+ :states 'normal
  :prefix "SPC"
  "SPC" 'evil-switch-to-windows-last-buffer
  "e" 'counsel-find-file
- "b" 'ivy-switch-buffer
- "k" 'kill-buffer)
+ "b" 'ivy-switch-buffer)
+
+(general-define-key
+ :states 'normal
+ :prefix "SPC"
+ "k" '(:ignore t :which-key "Kill")
+ "k f" '(kill-buffer :which-key "Kill buffer")
+ "k b" '(kill-this-buffer :which-key "Kill this buffer"))
 
 (general-define-key
  :states 'normal

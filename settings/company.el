@@ -5,6 +5,7 @@
 
 ;;; Code:
 (use-package company
+  :diminish company-mode
   :init
   (add-hook 'after-init-hook 'global-company-mode)
 
@@ -22,7 +23,7 @@
            (interactive)
            (when (fboundp 'company-select-previous) (company-select-previous 5))))
 
-  (setq company-tooltip-limit 20
+  (setq-default company-tooltip-limit 10
         company-echo-delay 0
         company-begin-commands '(self-insert-command)
         company-idle-delay 0.2

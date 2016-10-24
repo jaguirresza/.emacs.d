@@ -13,6 +13,7 @@
   (general-define-key :keymaps 'go-mode-map :states 'normal
             "gd" 'godef-jump
             "SPC d" 'godoc-at-point)
+
   (add-hook 'go-mode-hook
             (lambda ()
               (add-hook 'before-save-hook 'gofmt-before-save)

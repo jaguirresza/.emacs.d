@@ -20,6 +20,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+(require 'diminish)
+(require 'autorevert)
+(eval-after-load "autorevert" '(diminish 'auto-revert-mode))
+(require 'undo-tree)
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+
 ;;; Bootstrap `package'
 (dolist (package package-list)
   (unless (package-installed-p package)

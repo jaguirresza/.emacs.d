@@ -8,9 +8,9 @@
   :diminish ivy-mode
   :init
   (ivy-mode 1)
-  (setq-default ivy-use-virtual-buffers t)
 
   :config
+  (setq-default ivy-use-virtual-buffers t)
   (general-define-key :keymaps 'ivy-mode-map
                      "C-j" 'ivy-next-line
                      "C-k" 'ivy-previous-line
@@ -25,7 +25,7 @@
       :config (general-define-key :keymaps 'evil-normal-state-map
                 :prefix "SPC"
                 "p" '(:ignore t :which-key "Projectile")
-                "p f" '(counsel-projectile-find-file :which-key "Find file")
+                "p f" '(counsel-projectile-find-file-or-buffer :which-key "Find file")
                 "p b" '(counsel-projectile-switch-to-buffer :which-key "Find buffer")
                 "p d" '(counsel-projectile-find-dir :which-key "Find directory")
                 "p s" '(counsel-projectile-ag :which-key "ag in project")

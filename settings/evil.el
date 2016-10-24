@@ -5,6 +5,7 @@
 
 ;;; Code:
 (use-package evil
+  :diminish evil-mode
   :init
   (setq-default evil-ex-search-vim-style-regexp t
                 evil-search-module 'evil-search
@@ -32,6 +33,7 @@
     (evil-ex-define-cmd "Q" "quit"))
 
   (use-package evil-commentary
+    :diminish evil-commentary-mode
     :init (evil-commentary-mode))
 
   (use-package evil-iedit-state
