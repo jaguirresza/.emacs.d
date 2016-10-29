@@ -85,8 +85,7 @@
       (t (format "%s" vc-mode)))))
 
 (defun custom-modeline-flycheck-status ()
-  (defun cm-status (icon color)
-    )
+  (defun cm-status (icon color))
 
   (let* ((text (pcase flycheck-last-status-change
                 (`finished (if flycheck-current-errors

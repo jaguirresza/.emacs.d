@@ -5,11 +5,9 @@
 
 ;;; Code:
 (use-package go-mode
-  :init
-  (when (executable-find "goimports")
-    (setq-default gofmt-command "goimports"))
-
   :config
+  (setq-default gofmt-command "goimports")
+
   (general-define-key :keymaps 'go-mode-map :states 'normal
             "gd" 'godef-jump
             "SPC d" 'godoc-at-point)
