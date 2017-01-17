@@ -4,27 +4,23 @@
 ;;; Init Emacs configuration
 
 ;;; Code:
-(package-initialize)
-
 (require 'package)
-
-(defvar package-list)
-(setq-default package-list '(better-defaults
-                             general
-                             linum-relative
-                             use-package))
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq-default package-list '(better-defaults
+                             general
+                             diminish
+                             undo-tree
+                             linum-relative
+                             use-package))
+
+(package-initialize)
+
 
 (unless package-archive-contents
   (package-refresh-contents))
 
-(require 'diminish)
-(require 'autorevert)
-(eval-after-load "autorevert" '(diminish 'auto-revert-mode))
-(require 'undo-tree)
-(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 
 ;;; Bootstrap `package'
 (dolist (package package-list)
@@ -40,6 +36,12 @@
               use-package-verbose t)
 
 ;;; Requires
+(require 'diminish)
+(require 'autorevert)
+(eval-after-load "autorevert" '(diminish 'auto-revert-mode))
+(require 'undo-tree)
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+
 (eval-when-compile
   (require 'use-package))
 (require 'general)
