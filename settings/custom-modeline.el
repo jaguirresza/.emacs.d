@@ -153,6 +153,8 @@
   (let* ((available-width (- (window-width) (length left) 2)))
     (format (format "%%s %%%ds" available-width) left right)))
 
+(custom-set-faces
+   '(mode-line ((t (:box (:line-width 1 :color "#eee")) :background "#fff" ))))
 (use-package window-numbering
   :config
   (window-numbering-mode)
@@ -177,6 +179,7 @@
         (custom-modeline-icon-vc)
         (custom-modeline-flycheck-status))
        ))))))
+
 
 ;; Local Variables:
 ;; indent-tabs-mode: nil

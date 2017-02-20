@@ -49,9 +49,11 @@
 (require 'uniquify)
 
 (load-file "~/.emacs.d/settings.el")
-(load-file "~/.emacs.d/interface.el")
 (load-file "~/.emacs.d/platform.el")
 
 (load "~/.emacs.d/local.el" 'noerror)
 (load "~/.emacs.d/custom.el" 'noerror)
+
+(load-file "~/.emacs.d/interface.el")
 ;;; init.el ends here
+

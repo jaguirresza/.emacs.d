@@ -17,13 +17,11 @@
 
 (set-display-table-slot standard-display-table 0 ?\ )
 
-(use-package hemisu-theme
+(use-package greymatters-theme
   :config
-  (load-theme 'hemisu-dark t)
+  (load-theme 'greymatters t)
   )
 
-(custom-set-faces
-   '(mode-line ((t (:box (:line-width 1 :color "#555") )))))
 
 (set-frame-font "Menlo 16")
 
@@ -31,4 +29,7 @@
   (lambda (face)
     (set-face-attribute face nil :weight 'normal :underline nil))
   (face-list))
+
+(custom-set-faces
+   '(mode-line ((t (:box (:line-width 1 :color "#eee") :background "#fff")))))
 ;;; interface.el ends here
