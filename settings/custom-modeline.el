@@ -21,7 +21,6 @@
      (propertize (format " %s" (format-mode-line "%b"))
                  'help-echo "Find file"
                  'display '(raise 0.1)
-                 'mouse-face '(:foreground "#da8b55")
                  'local-map (make-mode-line-mouse-map
                              'mouse-1 (lambda () (interactive) (counsel-find-file)))))))
 
@@ -33,7 +32,6 @@
                    'display '(raise 0.1))
        (propertize (format " %s" (projectile-project-name))
                   'help-echo "Switch Project"
-                  'mouse-face '(:foreground "#da8b55")
                   'display '(raise 0.1)
                   'local-map (make-mode-line-mouse-map
                               'mouse-1 (lambda () (interactive) (counsel-projectile-switch-project)))))
@@ -41,7 +39,6 @@
 
 (defun custom-modeline-window-number ()
   (propertize (format " %c " (+ 9311 (window-numbering-get-number)))
-              'face `(:height 1.1 :foreground "#e4e4e4" :background "#8c799f")
               'display '(raise 0.1)))
 
 (defun custom-modeline-mode-icon ()
@@ -50,8 +47,7 @@
       (format "%s"
               (propertize icon
                           'help-echo (format "Major-mode: `%s`" major-mode)
-                          'display '(raise 0.05)
-                          'face `(:height 1.1 :foreground "#6c4173" :family ,(all-the-icons-icon-family-for-buffer)))))))
+                          'display '(raise 0.05))))))
 
 (defun custom-modeline-region-info ()
   (when mark-active
@@ -68,14 +64,11 @@
   (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
     (concat
      (propertize (format " %s" (all-the-icons-alltheicon "git" :height 1.0 :v-adjust 0.1))
-                 'face `(:foreground "#e4e4e4" :background "#8c799f")
                  'display '(raise 0.1))
-     (propertize " • "  'face '(:foreground "#e4e4e4" :background "#8c799f"))
+     (propertize " • ")
      (propertize (format "%s" (all-the-icons-octicon "git-branch"))
-                 'face `(:height 1.0 :foreground "#e4e4e4" :background "#8c799f" :family ,(all-the-icons-octicon-family))
                  'display '(raise 0.1))
      (propertize (format " %s  " branch)
-                 'face `(:foreground "#e4e4e4" :background "#8c799f" :height 0.9)
                  'display '(raise 0.1)))))
 
 (defun custom-modeline-icon-vc ()
@@ -95,26 +88,26 @@
                                               (+ (or .warning 0)))))
                                  (concat
                                    (propertize (all-the-icons-octicon "x")
-                                               'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#ba2f59"))
+                                               'face `(:family ,(all-the-icons-octicon-family) :height 0.9))
                                    (propertize (format " %s" error-count)
-                                               'face '(:height 0.9 :foreground "#ba2f59"))
+                                               'face '(:height 0.9))
                                    " "
                                    (propertize (all-the-icons-octicon "alert")
-                                               'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#dc752f"))
+                                               'face `(:family ,(all-the-icons-octicon-family) :height 0.9))
                                    (propertize (format " %s" warning-count)
-                                               'face '(:height 0.9 :foreground "#dc752f"))))
+                                               'face '(:height 0.9 ))))
                               (propertize (all-the-icons-octicon "check")
-                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#67b11d"))))
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 ))))
                 (`running     (propertize (all-the-icons-octicon "sync")
                                           'face `(:family ,(all-the-icons-octicon-family) :height 0.9)))
                 (`no-checker  (propertize (all-the-icons-octicon "circle-slash")
                                           'face `(:family ,(all-the-icons-octicon-family) :height 0.9)))
                 (`not-checked (propertize (all-the-icons-octicon "circle-slash")
-                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#d0d0d0")))
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 )))
                 (`errored     (propertize (all-the-icons-octicon "issue-opened")
-                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#df5f5f")))
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 )))
                 (`interrupted (propertize (all-the-icons-octicon "alert")
-                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :foreground "#df5f5f")))
+                                          'face `(:family ,(all-the-icons-octicon-family) :height 0.9 )))
                 (`suspicious  ""))))
      (propertize (format " %s " text)
                  'help-echo "Show Flycheck Errors"
@@ -139,7 +132,7 @@
       (propertize
         (concat
          (propertize (format "%s" (all-the-icons-octicon "package"))
-                     'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
+                     'face `(:family ,(all-the-icons-octicon-family) :height 1)
                      'display '(raise -0.1))
          (propertize (format " %d updates " num)
                      'face `(:height 0.9)))
@@ -150,14 +143,14 @@
 
 
 (defun custom-modeline-separator (sep)
-    (propertize (format " %s " sep) 'face '(:foreground "#d2ceda"))
+    (propertize (format " %s " sep) )
   )
 
 ;; write a function to do the spacing
 (defun custom-modeline-render (left right)
   "Return a string of `window-width' length containing LEFT, and RIGHT
  aligned respectively."
-  (let* ((available-width (- (window-width) (length left))))
+  (let* ((available-width (- (window-width) (length left) 2)))
     (format (format "%%s %%%ds" available-width) left right)))
 
 (use-package window-numbering
@@ -184,6 +177,7 @@
         (custom-modeline-icon-vc)
         (custom-modeline-flycheck-status))
        ))))))
+
 ;; Local Variables:
 ;; indent-tabs-mode: nil
 ;; eval: (flycheck-mode 0)

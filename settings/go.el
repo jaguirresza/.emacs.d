@@ -18,7 +18,8 @@
               (when (boundp 'evil-shift-width) (setq evil-shift-width 4))
               (setq tab-width 4
                     indent-tabs-mode 1)))
-
+  (use-package go-rename)
+  (use-package go-scratch)
   (use-package go-eldoc
     :config
     (add-hook 'go-mode-hook 'go-eldoc-setup)))

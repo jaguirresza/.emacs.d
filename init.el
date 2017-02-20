@@ -8,6 +8,7 @@
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 (setq-default package-list '(better-defaults
                              general
                              diminish
