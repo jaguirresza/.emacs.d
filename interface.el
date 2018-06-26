@@ -22,14 +22,8 @@
   (load-theme 'greymatters t)
   )
 
-
-(set-frame-font "Menlo 16")
-
  (mapc
   (lambda (face)
     (set-face-attribute face nil :weight 'normal :underline nil))
   (face-list))
-
-(custom-set-faces
-   '(mode-line ((t (:box (:line-width 1 :color "#eee") :background "#fff")))))
 ;;; interface.el ends here
