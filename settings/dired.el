@@ -11,14 +11,6 @@
   :init
   (add-hook 'dired-mode-hook 'vinegar/dired-setup)
 
-  (use-package dired+
-    :defer t
-    :init
-    (setq diredp-hide-details-initially-flag nil
-          diredp-hide-details-propagate-flag nil
-          font-lock-maximum-decoration (quote ((dired-mode . 1) (t . t))))
-    (when (fboundp 'toggle-diredp-find-file-reuse-dir) (toggle-diredp-find-file-reuse-dir 1)))
-
   :config
   (general-define-key
    :states '(normal emacs)
