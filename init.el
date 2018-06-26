@@ -6,6 +6,7 @@
 ;;; Code:
 (require 'package)
 
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
@@ -16,12 +17,14 @@
                              linum-relative
                              use-package))
 
-(package-initialize)
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
 
+(package-initialize)
 
 (unless package-archive-contents
   (package-refresh-contents))
-
 
 ;;; Bootstrap `package'
 (dolist (package package-list)
