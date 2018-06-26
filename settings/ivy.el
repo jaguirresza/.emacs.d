@@ -21,7 +21,7 @@
   (use-package counsel
     :config
     (use-package counsel-projectile
-      :init (counsel-projectile-on)
+      :ensure t
       :config (general-define-key :keymaps 'evil-normal-state-map
                 :prefix "SPC"
                 "p" '(:ignore t :which-key "Projectile")
