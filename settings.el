@@ -15,8 +15,8 @@
 
 (setq-default c-basic-offset 4
               fill-column 80
+              tab-width 4
               indent-tabs-mode nil
-              tab-width 2
               truncate-lines t)
 
 (c-set-offset 'case-label '+)

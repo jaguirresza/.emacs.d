@@ -19,8 +19,7 @@
 
 (use-package greymatters-theme
   :config
-  (load-theme 'greymatters t)
-  )
+  (load-theme 'greymatters t))
 
  (mapc
   (lambda (face)

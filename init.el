@@ -6,7 +6,6 @@
 ;;; Code:
 (require 'package)
 
-
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
@@ -18,6 +17,7 @@
                              use-package))
 
 (menu-bar-mode -1)
+
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
@@ -59,4 +59,3 @@
 
 (load-file "~/.emacs.d/interface.el")
 ;;; init.el ends here
-
