@@ -63,7 +63,7 @@
  :states 'normal
  :prefix "SPC"
  "c" '(:ignore t :which-key "Config")
- "c o" '(open-emacs-init-file :which-key "Open init file")
+ "c e" '(open-emacs-init-file :which-key "Edit init file")
  "c r" '(reload-emacs-init-file :which-key "Reload init file"))
 
 (general-define-key
@@ -76,10 +76,10 @@
 (general-define-key
  :states 'normal
  :prefix "SPC"
- "T" '(:ignore t :which-key "Toggle")
- "T f" '(toggle-frame-fullscreen :which-key "Toggle fullscreen")
- "T n" '(linum-mode :which-key "Toggle show numbers")
- "T N" '(toggle-linum-relative :which-key "Toggle relative numbers"))
+ "t" '(:ignore t :which-key "Toggle")
+ "t f" '(toggle-frame-fullscreen :which-key "Toggle fullscreen")
+ "t n" '(linum-mode :which-key "Toggle show numbers")
+ "t N" '(toggle-linum-relative :which-key "Toggle relative numbers"))
 
 (general-define-key
  :states 'normal
