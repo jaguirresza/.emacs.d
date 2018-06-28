@@ -11,6 +11,7 @@
 
   :config
   (setq-default ivy-use-virtual-buffers t)
+  (setq ivy-use-selectable-prompt t)
   (general-define-key :keymaps 'ivy-mode-map
                      "C-j" 'ivy-next-line
                      "C-k" 'ivy-previous-line
